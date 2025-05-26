@@ -86,7 +86,14 @@ export default function Products() {
                                                     </AlertDialogHeader>
                                                     <AlertDialogFooter>
                                                         <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                                                        <AlertDialogAction onClick={() => destroy(route('products.destroy', id))}>
+                                                        <AlertDialogAction
+                                                            onClick={() => {
+                                                                const toastId = toast.loading('Eliminando producto...');
+                                                                destroy(route('products.destroy', id), {
+                                                                    onSuccess: () => toast.remove(toastId),
+                                                                });
+                                                            }}
+                                                        >
                                                             Continuar
                                                         </AlertDialogAction>
                                                     </AlertDialogFooter>
