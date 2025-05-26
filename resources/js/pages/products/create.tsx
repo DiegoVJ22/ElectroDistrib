@@ -6,6 +6,7 @@ import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { FormEventHandler } from 'react';
+import { toast } from 'react-hot-toast';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -25,6 +26,17 @@ export default function ProductsCreate() {
         e.preventDefault();
         post(route('products.store'), {
             preserveScroll: true,
+            onError: (errors) => {
+                // Puedes usar el texto que quieras; aquí concatenamos el
+                // primer mensaje de error de validación si existe
+                const first = Object.values(errors)[0] as string | undefined;
+
+                toast.dismiss('form-error'); // evita duplicados
+                toast.error('Corrige los campos marcados.', {
+                    id: 'form-error',
+                    duration: 4000,
+                });
+            },
         });
     };
 
@@ -48,7 +60,7 @@ export default function ProductsCreate() {
                             autoComplete="nombre"
                             placeholder=""
                         />
-                        <InputError className="mt-2" message={errors.nombre} />
+                        <InputError message={errors.nombre} />
 
                         <Label htmlFor="precio">Precio</Label>
                         <Input
@@ -60,7 +72,7 @@ export default function ProductsCreate() {
                             placeholder=""
                             type="number"
                         />
-                        <InputError className="mt-2" message={errors.precio} />
+                        <InputError message={errors.precio} />
 
                         <Label htmlFor="stock">Stock</Label>
                         <Input
@@ -72,7 +84,7 @@ export default function ProductsCreate() {
                             placeholder=""
                             type="number"
                         />
-                        <InputError className="mt-2" message={errors.stock} />
+                        <InputError message={errors.stock} />
                     </div>
 
                     <div>
