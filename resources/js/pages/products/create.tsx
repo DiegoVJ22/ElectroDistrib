@@ -26,11 +26,7 @@ export default function ProductsCreate() {
         e.preventDefault();
         post(route('products.store'), {
             preserveScroll: true,
-            onError: (errors) => {
-                // Puedes usar el texto que quieras; aquí concatenamos el
-                // primer mensaje de error de validación si existe
-                const first = Object.values(errors)[0] as string | undefined;
-
+            onError: () => {
                 toast.dismiss('form-error'); // evita duplicados
                 toast.error('Corrige los campos marcados.', {
                     id: 'form-error',
