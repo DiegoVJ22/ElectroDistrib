@@ -15,7 +15,8 @@ import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Product } from '@/types/product';
 import { Head, Link, useForm, usePage } from '@inertiajs/react';
-
+import { useEffect } from 'react';
+import toast from 'react-hot-toast';
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Productos',
@@ -24,9 +25,16 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function Products() {
-    const { products } = usePage<{ products: Product[] }>().props;
+    const { products, flash } = usePage<{
+        products: Product[];
+        flash?: { success?: string; error?: string };
+    }>().props;
     const { delete: destroy } = useForm();
-
+    // Muestra el toast cada vez que llegue un flash nuevo
+    useEffect(() => {
+        if (flash?.success) toast.success(flash.success);
+        if (flash?.error) toast.error(flash.error);
+    }, [flash]);
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Productos" />
