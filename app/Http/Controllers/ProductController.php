@@ -15,7 +15,7 @@ class ProductController extends Controller
     {
         return Inertia::render('products/index', [
             'products' => Product::where('estado', true)
-                ->orderBy('id', 'asc') // o 'desc' si querés los más nuevos primero
+                ->orderBy('id', 'asc')
                 ->get(),
         ]);
     }
@@ -58,7 +58,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $product = Product::find($product->id);
+        $product = Product::findOrFail($product->id);
         return Inertia::render('products/edit',[
             "product" => $product
         ]);
@@ -75,7 +75,7 @@ class ProductController extends Controller
             'stock' => 'required|integer|min:0',
         ]);
 
-        $product = Product::find($product->id);
+        $product = Product::findOrFail($product->id);
 
         $product->nombre = $request->nombre;
         $product->precio = $request->precio;
@@ -90,7 +90,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $product = Product::find($product->id);
+        $product = Product::findOrFail($product->id);
         $product->estado = false;
         $product->save();
 
