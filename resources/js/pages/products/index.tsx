@@ -51,7 +51,7 @@ export default function Products() {
                             <TableHead className="text-center">Nombre</TableHead>
                             <TableHead className="text-center">Precio</TableHead>
                             <TableHead className="text-center">Stock</TableHead>
-                            <TableHead className="text-center">Acciones</TableHead>
+                            <TableHead className="w-[200px] text-center">Acciones</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>

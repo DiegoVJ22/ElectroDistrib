@@ -84,7 +84,7 @@ export default function ProductsCreate() {
                     </div>
 
                     <div>
-                        <Button>Agregar</Button>
+                        <Button>Crear</Button>
                     </div>
                 </form>
             </div>

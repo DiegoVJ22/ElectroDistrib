@@ -84,7 +84,7 @@ export default function UsersCreate() {
                     </div>
 
                     <div>
-                        <Button>Agregar</Button>
+                        <Button>Crear</Button>
                     </div>
                 </form>
             </div>

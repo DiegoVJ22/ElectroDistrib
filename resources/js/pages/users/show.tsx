@@ -8,7 +8,7 @@ import { Head, Link, useForm, usePage } from '@inertiajs/react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Detalles Usuario',
+        title: 'Detalle Usuario',
         href: '/users',
     },
 ];
