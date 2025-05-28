@@ -98,7 +98,7 @@ export default function RolesEdit() {
                     </div>
 
                     <div>
-                        <Button>Crear</Button>
+                        <Button>Editar</Button>
                     </div>
                 </form>
             </div>

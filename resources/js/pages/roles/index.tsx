@@ -126,7 +126,7 @@ export default function Roles() {
                                                     <AlertDialogHeader>
                                                         <AlertDialogTitle>¿Estás seguro?</AlertDialogTitle>
                                                         <AlertDialogDescription>
-                                                            Esta acción no se puede deshacer. Eliminará el usuario de forma permanente.
+                                                            Esta acción no se puede deshacer. Eliminará el rol de forma permanente.
                                                         </AlertDialogDescription>
                                                     </AlertDialogHeader>
                                                     <AlertDialogFooter>
